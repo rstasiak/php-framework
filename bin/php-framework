@@ -1,0 +1,31 @@
+#!/usr/bin/php
+<?php
+
+//echo getcwd();
+
+mkdir('config');
+mkdir('public');
+mkdir('src');
+mkdir('src/Controller');
+mkdir('templates');
+
+$f1 =  dirname(__DIR__) . '/files/routes.php';
+$f2 =  dirname(__DIR__) . '/files/index.php';
+$f3 =  dirname(__DIR__) . '/files/HomeController.php';
+$f4 =  dirname(__DIR__) . '/files/composer.json';
+$f5 =  dirname(__DIR__) . '/files/bootstrap.php';
+$f6 =  dirname(__DIR__) . '/files/container.php';
+$f7 =  dirname(__DIR__) . '/files/definitions.php';
+$f8 =  dirname(__DIR__) . '/files/index.twig';
+
+copy($f1, 'config/routes.php');
+copy($f2, 'public/index.php');
+copy($f3, 'src/Controller/HomeController.php');
+copy($f4, 'composer.json');
+copy($f5, 'bootstrap.php');
+copy($f6, 'container.php');
+copy($f7, 'config/definitions.php');
+copy($f8, 'templates/index.twig');
+
+exec('touch .env');
+exec('composer install');
