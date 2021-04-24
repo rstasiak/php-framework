@@ -45,7 +45,7 @@ class Input
 
         }
 
-        if ( ! is_null($name)) {
+        if ($name == '') {
 
             return '';
         }
