@@ -36,21 +36,15 @@ class Input
 
     private function fetch(string $type, string $name)
     {
-
         $data = $this->load($type);
 
-        if ( ! is_null($name) && isset($data[$name])) {
-
-            return $data[$name];
-
+        if ($name == '')
+        {
+            return $data;
         }
 
-        if ($name == '') {
+        return $data[$name] ?? '';
 
-            return '';
-        }
-
-        return $data;
     }
 
 }
