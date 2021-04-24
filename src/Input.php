@@ -43,7 +43,7 @@ class Input
             return $data;
         }
 
-        return $data[$name] ?? '';
+        return $data[$name] ?? null;
 
     }
 
