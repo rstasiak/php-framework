@@ -1,5 +1,6 @@
 {
   "name": "new/app",
+  "description": "new/app",
   "autoload": {
     "psr-4": {
       "App\\": "src/"
@@ -11,8 +12,8 @@
   },
   "repositories": [
     {
-      "type": "path",
-      "url": "./php-framework"
+      "type": "vcs",
+      "url": "git@github.com:rstasiak/php-framework.git"
     }
   ]
 }
