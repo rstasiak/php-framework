@@ -6,6 +6,7 @@ namespace PHPFramework;
 
 use DI\Container;
 use Twig\Environment;
+use PHPFramework\Input;
 
 class Controller
 {
@@ -16,6 +17,7 @@ class Controller
     {
         $this->container = $container;
         $this->twig = $container->get(Environment::class);
+        $this->input = new Input();
 
 
     }
