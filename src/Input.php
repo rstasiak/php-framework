@@ -7,12 +7,12 @@ namespace PHPFramework;
 class Input
 {
 
-    public function post(?string $name = null)
+    public function post(string $name = '')
     {
         return $this->fetch('post', $name);
     }
 
-    public function get(?string $name = null)
+    public function get(string $name = '')
     {
         return $this->fetch('get', $name);
     }
