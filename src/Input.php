@@ -6,28 +6,51 @@ namespace PHPFramework;
 
 class Input
 {
-    public function post(?string $name = null) {
 
-        if (!is_null($name) && isset($_POST[$name])) {
+    public function post(?string $name = null)
+    {
+        return $this->fetch('post', $name);
+    }
 
-            return $_POST[$name];
+    public function get(?string $name = null)
+    {
+        return $this->fetch('get', $name);
+    }
 
+    private function load(string $type): array
+    {
+
+        switch ($type) {
+
+            case 'get':
+                return $_GET;
+
+            case 'post':
+                return $_POST;
         }
 
-        return $_POST;
+        return [];
+
 
     }
 
-    public function get(?string $name = null) {
+    private function fetch(string $type, string $name)
+    {
 
-        if (!is_null($name) && isset($_GET[$name])) {
+        $data = $this->load($type);
 
-            return $_GET[$name];
+        if ( ! is_null($name) && isset($data[$name])) {
+
+            return $data[$name];
 
         }
 
-        return $_GET;
+        if ( ! is_null($name)) {
 
+            return '';
+        }
+
+        return $data;
     }
 
 }
