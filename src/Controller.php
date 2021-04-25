@@ -65,7 +65,7 @@ class Controller
     public function redirect($destination)
     {
 
-        header("Location: http://" . $_SERVER['HTTP_HOST'] . $destination);
+        header("Location: " . $_SERVER['BASE_URL'] . $destination);
         exit;
 
     }
