@@ -65,7 +65,7 @@ class Controller
     public function redirect($destination)
     {
 
-        header("Location: https://admin.artpower.pl" . $destination);
+        header("Location: " . $_SERVER['BASE_URL'] . $destination);
         exit;
 
     }
