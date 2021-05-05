@@ -16,7 +16,8 @@
     "vlucas/phpdotenv": "^4.1",
     "slim/psr7": "^1.0",
     "ext-pdo": "*",
-    "ramsey/uuid": "^3.9"
+    "ramsey/uuid": "^3.9",
+    "twig/twig": "^3.3"
   },
   "description": "php-framework"
 }
