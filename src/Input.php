@@ -71,8 +71,7 @@ class Input
 
     private function cleanValue(string $value): string
     {
-        $cleaned = strip_tags($value);
-        return $cleaned;
+        return htmlentities($value);
     }
 
 }
