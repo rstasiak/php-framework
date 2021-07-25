@@ -71,7 +71,7 @@ class Input
 
     private function cleanValue(string $value): string
     {
-        return htmlentities($value);
+        return htmlspecialchars($value, ENT_QUOTES, "UTF-8");
     }
 
 }
