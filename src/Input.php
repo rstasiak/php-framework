@@ -43,8 +43,6 @@ class Input
         $data = $this->load($type);
 
 
-
-
         if ($clean) {
             $data = $this->clean($data);
         }
@@ -55,9 +53,11 @@ class Input
 
         // jeśli podamy nazwę pola
 
+        $rawValue = $data[$name] ?? null;
+
         $value = match ($valueType) {
-            default => (string) $data[$name],
-            'bool' => (bool) $data[$name],
+            default => (string) $rawValue,
+            'bool' => (bool) $rawValue,
         };
 
         return $value ?? null;
