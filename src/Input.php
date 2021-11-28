@@ -9,11 +9,11 @@ use function DI\string;
 class Input
 {
 
-    public function post(string $name = '', bool $clean = true)
+    public function post(string $name = '', bool $clean = true, string $type = 'string')
     {
 
 
-        return $this->fetch('post', $name, $clean);
+        return $this->fetch('post', $name, $clean, $type);
     }
 
     public function get(string $name = '', bool $clean = true)
@@ -38,21 +38,29 @@ class Input
 
     }
 
-    private function fetch(string $type, string $name, bool $clean = true)
+    private function fetch(string $type, string $name, bool $clean = true, string $type)
     {
         $data = $this->load($type);
 
-        if ($clean)
-        {
+
+
+
+        if ($clean) {
             $data = $this->clean($data);
         }
 
-        if ($name == '')
-        {
+        if ($name == '') {
             return $data;
         }
 
-        return $data[$name] ?? null;
+        // jeśli podamy nazwę pola
+
+        $value = match ($type) {
+            default => (string) $data[$name],
+            'bool' => (bool) $data[$name],
+        };
+
+        return $value ?? null;
 
     }
 
@@ -60,8 +68,7 @@ class Input
     {
         $cleaned = [];
 
-        foreach($data as $key => $value)
-        {
+        foreach ($data as $key => $value) {
             $cv = $this->cleanValue($value);
             $cleaned[$key] = $cv;
         }

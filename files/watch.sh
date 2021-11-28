@@ -1,0 +1,1 @@
+sass --watch dev/scss:public/assets/css
