@@ -38,7 +38,7 @@ class Input
 
     }
 
-    private function fetch(string $type, string $name, bool $clean = true, string $type)
+    private function fetch(string $type, string $name, bool $clean = true, string $valueType = 'string')
     {
         $data = $this->load($type);
 
@@ -55,7 +55,7 @@ class Input
 
         // jeśli podamy nazwę pola
 
-        $value = match ($type) {
+        $value = match ($valueType) {
             default => (string) $data[$name],
             'bool' => (bool) $data[$name],
         };
