@@ -58,6 +58,7 @@ class Input
         $value = match ($valueType) {
             default => (string) $rawValue,
             'bool' => (bool) $rawValue,
+            'int' => (int) $rawValue,
         };
 
         return $value ?? null;
