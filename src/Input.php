@@ -16,9 +16,9 @@ class Input
         return $this->fetch('post', $name, $clean, $type);
     }
 
-    public function get(string $name = '', bool $clean = true)
+    public function get(string $name = '', bool $clean = true, string $type = 'string')
     {
-        return $this->fetch('get', $name, $clean);
+        return $this->fetch('get', $name, $clean, $type);
     }
 
     private function load(string $type): array
