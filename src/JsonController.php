@@ -59,6 +59,9 @@ class JsonController
         $res = call_user_func_array([$this, $name], $values);
 
         header('Content-Type: application/json; charset=utf-8');
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Methods: GET, POST, OPTIONS, PATCH');
+        header("Access-Control-Allow-Headers: X-Requested-With");
         echo $res;
 
     }
