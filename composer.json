@@ -1,5 +1,6 @@
 {
   "name": "rstasiak/php-framework",
+  "bin": ["bin/php-framework"],
   "autoload": {
     "psr-4": {
       "PHPFramework\\": "src/"
