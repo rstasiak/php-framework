@@ -25,6 +25,11 @@ class JsonController extends BaseController
 
     protected function render($res) {
 
+        if (!is_array($res))
+        {
+            throw new \Exception('not valid response');
+        }
+
         switch($res['code']) {
 
             case 200:
