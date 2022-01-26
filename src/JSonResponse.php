@@ -5,7 +5,7 @@ namespace PHPFramework;
 class JSonResponse
 {
 
-    public function render($message, int $code): array
+    public function render($message, int $code = 200): array
     {
 
         if (!in_array($code, [200, 400, 404])) {
