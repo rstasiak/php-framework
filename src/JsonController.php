@@ -25,7 +25,7 @@ class JsonController extends BaseController
 
     protected function render($res) {
 
-        if (!is_array($res))
+        if (!isset($res['payload']) && !isset($res['code']))
         {
             throw new \Exception('not valid response');
         }
