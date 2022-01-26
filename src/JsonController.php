@@ -21,7 +21,20 @@ class JsonController extends BaseController
 
     protected function render($res) {
 
-        header("HTTP/1.1 404 Not Found");
+        switch($res['code']) {
+
+            case 200:
+                header("HTTP/1.1 200 OK");
+                break;
+            case 404:
+                header("HTTP/1.1 404 Not Found");
+                break;
+            case 400:
+                header( 'HTTP/1.1 400 Bad Request' );
+                break;
+
+        }
+
         header('Content-Type: application/json; charset=utf-8');
         header('Access-Control-Allow-Origin: *');
         header('Access-Control-Allow-Methods: GET, POST, OPTIONS, PATCH');
