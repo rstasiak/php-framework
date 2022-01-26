@@ -9,10 +9,14 @@ use function DI\string;
 class Input
 {
 
+    public function __construct(private ?array $post = null, private ?array $get = null)
+    {
+        $this->post = $post ?? $_POST;
+        $this->get = $get ?? $_GET;
+    }
+
     public function post(string $name = '', bool $clean = true, string $type = 'string')
     {
-
-
         return $this->fetch('post', $name, $clean, $type);
     }
 
@@ -24,16 +28,11 @@ class Input
     private function load(string $type): array
     {
 
-        switch ($type) {
-
-            case 'get':
-                return $_GET;
-
-            case 'post':
-                return $_POST;
-        }
-
-        return [];
+        return match ($type) {
+            'get' => $this->get,
+            'post' => $this->post,
+            default => [],
+        };
 
 
     }

@@ -5,6 +5,11 @@
       "PHPFramework\\": "src/"
     }
   },
+  "autoload-dev": {
+    "psr-4": {
+      "PHPFramework\\Tests\\": "tests/"
+    }
+  },
   "authors": [
     {
       "name": "Rad"

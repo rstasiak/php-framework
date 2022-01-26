@@ -3,81 +3,30 @@
 
 namespace PHPFramework;
 
-
 use DI\Container;
 use Twig\Environment;
-use PHPFramework\Input;
 
-class JsonController
+class JsonController extends BaseController
 {
 
-	protected Environment $twig;
+    protected JSonResponse $response;
 
     public function __construct(Container $container)
     {
-        $this->container = $container;
-        $this->twig = $container->get(Environment::class);
+        parent::__construct($container);
         $this->input = new Input();
-
+        $this->response = new JSonResponse();
 
     }
 
-    public function __invoke($name, $params)
-    {
+    protected function render($res) {
 
-        $reflection = new \ReflectionClass($this);
-
-
-        if ($reflection->hasMethod($name))
-		{
-			$method = $reflection->getMethod($name);
-		} else {
-
-        	die('there is no "' . $name . '" method in controller ' . get_class($this));
-		}
-
-        $values = [];
-
-        foreach ($method->getParameters() as $parameter) {
-
-            if ($parameter->getType()->isBuiltin()) {
-
-                if ( ! isset($params[$parameter->getName()]) && !$parameter->isDefaultValueAvailable()) {
-
-                    throw new \Exception('not set ' . $parameter->getName());
-                }
-
-                $values[] = $params[$parameter->getName()] ?? $parameter->getDefaultValue();
-
-            } else {
-
-                $values[] = $this->container->get($parameter->getClass()->name);
-            }
-
-        }
-
-        $res = call_user_func_array([$this, $name], $values);
-
+        header("HTTP/1.1 404 Not Found");
         header('Content-Type: application/json; charset=utf-8');
         header('Access-Control-Allow-Origin: *');
         header('Access-Control-Allow-Methods: GET, POST, OPTIONS, PATCH');
         header("Access-Control-Allow-Headers: X-Requested-With");
-        echo $res;
-
-    }
-
-    public function redirect($destination)
-    {
-
-        header("Location: " . $_SERVER['BASE_URL'] . $destination);
-        exit;
-
-    }
-
-    public function redirectToReferer()
-    {
-        header("Location: " . $_SERVER['HTTP_REFERER']);
-        exit;
+        echo $res['payload'];
 
     }
 

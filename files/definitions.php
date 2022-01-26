@@ -10,14 +10,11 @@ return [
 	Environment::class => function () {
 
 		$loader = new FilesystemLoader(ROOT_DIR . '/templates');
-		$twig = new Environment($loader, [
+        return new Environment($loader, [
 
-			'cache' => false,
+            'cache' => false,
 
-		]);
-
-		return $twig;
-
+        ]);
 
 	},
 
