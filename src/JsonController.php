@@ -14,7 +14,11 @@ class JsonController extends BaseController
     public function __construct(Container $container)
     {
         parent::__construct($container);
-        $this->input = new Input();
+        $this->input = new Input(
+            json_decode(file_get_contents("php://input", "r",), true),
+            $_GET
+        );
+
         $this->response = new JSonResponse();
 
     }
