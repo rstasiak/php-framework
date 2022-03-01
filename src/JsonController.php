@@ -23,7 +23,7 @@ class JsonController extends BaseController
 
     }
 
-    public function getBearer():string
+    public function getBearer(): string
     {
 
         if ( ! isset(getallheaders()['Authorization'])) {
@@ -32,8 +32,7 @@ class JsonController extends BaseController
 
         $auth = getallheaders()['Authorization'];
 
-        if ( ! str_starts_with($auth, 'Bearer'))
-        {
+        if ( ! str_starts_with($auth, 'Bearer')) {
             return '';
         }
 
@@ -59,6 +58,9 @@ class JsonController extends BaseController
                 break;
             case 400:
                 header('HTTP/1.1 400 Bad Request');
+                break;
+            case 401:
+                header('HTTP/1.1 401 Unauthorized');
                 break;
 
         }
