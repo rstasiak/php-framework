@@ -23,14 +23,21 @@ class JsonController extends BaseController
 
     }
 
-    protected function render($res) {
+    public function getBearer() {
 
-        if (!isset($res['payload']) && !isset($res['code']))
-        {
+        return getallheaders();
+
+
+    }
+
+    protected function render($res)
+    {
+
+        if ( ! isset($res['payload']) && ! isset($res['code'])) {
             throw new \Exception('not valid response');
         }
 
-        switch($res['code']) {
+        switch ($res['code']) {
 
             case 200:
                 header("HTTP/1.1 200 OK");
@@ -39,7 +46,7 @@ class JsonController extends BaseController
                 header("HTTP/1.1 404 Not Found");
                 break;
             case 400:
-                header( 'HTTP/1.1 400 Bad Request' );
+                header('HTTP/1.1 400 Bad Request');
                 break;
 
         }
