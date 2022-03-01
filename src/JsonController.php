@@ -37,7 +37,7 @@ class JsonController extends BaseController
             return '';
         }
 
-        return substr($auth, 6);
+        return substr($auth, 7);
 
 
     }
