@@ -32,7 +32,7 @@ class JsonController extends BaseController
 
         $auth = getallheaders()['Authorization'];
 
-        if (substr($auth, 1, 6) <> 'Bearer')
+        if ( ! str_starts_with($auth, 'Bearer'))
         {
             return '';
         }
