@@ -23,9 +23,21 @@ class JsonController extends BaseController
 
     }
 
-    public function getBearer() {
+    public function getBearer():string
+    {
 
-        return getallheaders();
+        if ( ! isset(getallheaders()['Authorization'])) {
+            return '';
+        }
+
+        $auth = getallheaders()['Authorization'];
+
+        if (substr($auth, 1, 6) <> 'Bearer')
+        {
+            return '';
+        }
+
+        return substr($auth, 6);
 
 
     }
