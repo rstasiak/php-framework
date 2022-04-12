@@ -14,8 +14,23 @@ class JsonController extends BaseController
     public function __construct(Container $container)
     {
         parent::__construct($container);
+
+        $post = file_get_contents("php://input", "r");
+
+        $json = json_decode($post, true);
+
+        $error = json_last_error();
+
+        if ($error > 0) {
+
+            $this->render(['payload' => 'json parsing error: ' . json_last_error_msg(), 'code' => 400]);
+            exit;
+
+        }
+
+
         $this->input = new Input(
-            json_decode(file_get_contents("php://input", "r",), true),
+            $json,
             $_GET
         );
 
