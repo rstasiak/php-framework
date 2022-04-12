@@ -17,15 +17,22 @@ class JsonController extends BaseController
 
         $post = file_get_contents("php://input", "r");
 
-        $json = json_decode($post, true);
+        if (trim($post) <> '') {
 
-        $error = json_last_error();
+            $json = json_decode($post, true);
 
-        if ($error > 0) {
+            $error = json_last_error();
 
-            $this->render(['payload' => 'json parsing error: ' . json_last_error_msg(), 'code' => 400]);
-            exit;
+            if ($error > 0) {
 
+                $this->render(['payload' => 'json parsing error: '.json_last_error_msg(), 'code' => 400]);
+                exit;
+
+            }
+
+        } else {
+
+            $json = '';
         }
 
 
