@@ -37,11 +37,12 @@ class Input
             return $data;
         }
 
-        if ( ! isset($data[$name]) || trim($data[$name]) === '') {
+        if (( ! isset($data[$name]) || (!is_array($data[$name]) && trim($data[$name]) === ''))) {
 
             return null;
 
         }
+
 
         return $data[$name];
 
