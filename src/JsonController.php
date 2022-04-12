@@ -32,7 +32,7 @@ class JsonController extends BaseController
 
         } else {
 
-            $json = '';
+            $json = [];
         }
 
 
