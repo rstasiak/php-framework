@@ -23,7 +23,8 @@
     "slim/psr7": "^1.0",
     "ext-pdo": "*",
     "ramsey/uuid": "^3.9",
-    "twig/twig": "^3.3"
+    "twig/twig": "^3.3",
+    "monolog/monolog": "^2.8"
   },
   "description": "php-framework"
 }
