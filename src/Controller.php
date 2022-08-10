@@ -33,4 +33,30 @@ class Controller extends BaseController
 
     }
 
+    public function flash(array $data, $name='default')
+    {
+
+        $_SESSION['__flash'][$name] = $data;
+    }
+
+    public function unflash(string $name = 'default'): ?array
+    {
+
+        if ( ! isset($_SESSION['__flash'][$name])) {
+            return null;
+        }
+
+        $res = $_SESSION['__flash'][$name];
+        unset($_SESSION['__flash'][$name]);
+
+        return $res;
+    }
+
+    public function flashed(string $name = 'default'): bool
+    {
+
+        return isset($_SESSION['__flash'][$name]);
+
+    }
+
 }
