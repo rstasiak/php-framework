@@ -1,8 +1,28 @@
+@import "variables";
 body {
 
-  background: red;
+  background: $danger;
 
 }
+
+h1.title {
+
+  color:$text-light;
+
+}
+
+.subtitle {
+
+  color:$text-light;
+
+  strong {
+
+    color:$text-light;
+  }
+
+}
+
+
 
 
 

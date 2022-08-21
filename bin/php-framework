@@ -1,8 +1,6 @@
 #!/usr/local/bin/php
 <?php
 
-//echo getcwd();
-
 mkdir('config');
 mkdir('public');
 mkdir('public/assets');
@@ -25,6 +23,8 @@ $f8 =  dirname(__DIR__) . '/files/index.twig';
 $f9 =  dirname(__DIR__) . '/files/styles.scss';
 $f10 =  dirname(__DIR__) . '/files/common.scss';
 $f11 =  dirname(__DIR__) . '/files/watch.sh';
+$f12 =  dirname(__DIR__) . '/files/variables.scss';
+
 
 
 copy($f1, 'config/routes.php');
@@ -38,6 +38,9 @@ copy($f8, 'templates/index.twig');
 copy($f9, 'dev/scss/styles.scss');
 copy($f10, 'dev/scss/common.scss');
 copy($f11, 'watch.sh');
+copy($f12, 'dev/scss/variables.scss');
 
 exec('touch .env');
-exec('composer install');
+exec('composer update');
+exec('npm install bulma');
+exec('sass --watch dev/scss:public/assets/css');
